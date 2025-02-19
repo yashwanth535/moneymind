@@ -22,8 +22,8 @@ body,html {
   background-color: #280832;
   box-shadow: 0 0 5px #83bce3; /* Add glow effect */
 }
-#formType{
-  width: 15%;
+#formType,#modeOfPayment{
+  width: 19%;
   margin: 0px auto;
   padding: 10px;
   border-radius: 5px;

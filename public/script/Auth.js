@@ -4,6 +4,9 @@ async function signinUser(event) {
     const form = event.target;
     const email = form.querySelector('#email').value;
     const password = form.querySelector('#password').value;
+    const load = form.querySelector('.loading');
+    load.style.display = 'block';
+
 
     try {
         const response = await fetch('/auth/signin', {
