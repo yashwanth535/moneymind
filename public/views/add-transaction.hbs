@@ -111,5 +111,38 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
         }
     </style>
+     <div class="upload-container">
+    <input type="file" id="imageInput" accept="image/*">
+    <button class="select-button" onclick="document.getElementById('imageInput').click()">
+        Select Image
+    </button>
+</div>
+
+<script type="module">
+    import { handleScan } from '../script/geminiapi.js';
+
+    const imageInput = document.getElementById('imageInput');
+
+    imageInput.addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (file && file.type.startsWith('image/')) {
+            console.log("Scanning image...");
+
+            try {
+                const response = await handleScan(file);
+
+                if (response && response.success) {
+                    console.log("Scan Successful:", response.analysis);
+                } else {
+                    console.error("Scan Failed:", response.error);
+                }
+            } catch (error) {
+                console.error("Error:", error.message);
+            }
+        } else {
+            alert('Please select an image file');
+        }
+    });
+</script>
 </body>
 </html>
